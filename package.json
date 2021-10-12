@@ -1,6 +1,6 @@
 {
   "name": "suggestions-list",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A typeahead component for inputs",
   "main": "index.js",
   "scripts": {
