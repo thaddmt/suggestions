@@ -12,7 +12,7 @@ var Suggestions = function(el, data, options) {
     limit: 5,
     filter: true,
     hideOnBlur: true,
-    noInitialSelection: false
+    noInitialSelection: true
   }, options);
 
   this.el = el;
@@ -25,7 +25,7 @@ var Suggestions = function(el, data, options) {
   this.list.draw();
 
   this.el.addEventListener('keyup', function(e) {
-    this.handleKeyUp(e.keyCode);
+    this.handleKeyUp(e.keyCode, e);
   }.bind(this), false);
 
   this.el.addEventListener('keydown', function(e) {
@@ -52,7 +52,7 @@ var Suggestions = function(el, data, options) {
   return this;
 };
 
-Suggestions.prototype.handleKeyUp = function(keyCode) {
+Suggestions.prototype.handleKeyUp = function(keyCode, e) {
   // 40 - DOWN
   // 38 - UP
   // 27 - ESC
@@ -62,15 +62,27 @@ Suggestions.prototype.handleKeyUp = function(keyCode) {
   if (keyCode === 40 ||
       keyCode === 38 ||
       keyCode === 27 ||
-      keyCode === 13 ||
       keyCode === 9) return;
-
+      
+  if (keyCode === 13) {
+    if (this.list.items[this.list.active]) {
+      this.list.handleMouseUp(this.list.items[this.list.active]);
+      e.stopPropagation();
+    }
+    return;
+  }
+  
   this.handleInputChange(this.el.value);
+
 };
 
 Suggestions.prototype.handleKeyDown = function(e) {
   switch (e.keyCode) {
     case 13: // ENTER
+      if (this.list.active >= 0) {
+        this.list.selectingListItem = true;
+      }
+      break;
     case 9: // TAB
       if (!this.list.isEmpty()) {
         if (this.list.isVisible()) {
