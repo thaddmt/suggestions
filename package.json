@@ -1,6 +1,6 @@
 {
-  "name": "suggestions",
-  "version": "1.7.1",
+  "name": "suggestions-list",
+  "version": "0.0.1",
   "description": "A typeahead component for inputs",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/tristen/suggestions.git"
+    "url": "git+ssh://git@github.com:thaddmt/suggestions-list.git"
   },
   "keywords": [
     "typeahead",
@@ -22,9 +22,9 @@
   "author": "tristen",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/tristen/suggestions/issues"
+    "url": "https://github.com/thaddmt/suggestions-list/issues"
   },
-  "homepage": "https://github.com/tristen/suggestions#readme",
+  "homepage": "https://github.com/thaddmt/suggestions-list/blob/main/README.md",
   "devDependencies": {
     "browserify": "^12.0.1",
     "budo": "^7.0.2",
